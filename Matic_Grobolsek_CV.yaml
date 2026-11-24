@@ -1,0 +1,302 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+cv:
+  name: Matic Grobolšek
+  headline: Data Scientist and Computer Science Student
+  location: Škofja Loka, Slovenia
+  email: dev@mail.grobolsek.com
+  photo:
+  phone:
+  custom_connections:
+    - placeholder: '+386 ** *** 934'  # masked phone
+      fontawesome_icon: phone  # masked phone
+      url:  # masked phone
+  website: https://grobolsek.com
+  social_networks:
+    - network: GitHub
+      username: grobolsek
+  sections:
+    experience:
+      - company: Knauf Insulation
+        position: Data Scientist
+        date:
+        start_date: 2025-05
+        end_date: present
+        location:
+        summary:
+        highlights:
+          - Develop command-line and desktop image-analysis tools with Python, OpenCV and scikit-image
+          - Build data-analysis dashboards and carry out data migrations
+          - Write technical documentation and introduce new tools and technologies to the team
+      - company: Biolab, University of Ljubljana
+        position: Programmer
+        date: Summer 2024
+        start_date:
+        end_date:
+        location:
+        summary:
+        highlights:
+          - Built an application for managing research datasets with Python and Orange3
+      - company: Sibo
+        position: Programmer
+        date: Summer 2023
+        start_date:
+        end_date:
+        location:
+        summary:
+        highlights:
+          - Developed an interactive meeting-room booking scheduler in C# and Visual Basic
+    education:
+      - institution: University of Ljubljana
+        area: Computer and Information Science
+        degree: BSc
+        date:
+        start_date: 2023-10
+        end_date: present
+        location: Ljubljana, Slovenia
+        summary:
+        highlights:
+          - 'Focus: program and system security, DevOps, AI, game engine development'
+      - institution: School Centre Kranj
+        area: Computer Technician
+        degree:
+        date:
+        start_date: 2019-09
+        end_date: 2023-06
+        location: Kranj, Slovenia
+        summary:
+        highlights:
+    projects:
+      - name: '[Varsis](https://github.com/grobolsek/varsis-app)'
+        date:
+        start_date:
+        end_date:
+        location:
+        summary: self-hosted streaming server for lossless music
+        highlights:
+          - FastAPI and SQLAlchemy backend with a Vue 3 frontend
+          - Plugin system for extensions; deployed with Docker Compose behind Caddy
+      - name: '[atlas-views](https://github.com/grobolsek/atlas-views)'
+        date:
+        start_date:
+        end_date:
+        location:
+        summary: Python CLI that adds MySQL views to Atlas migrations without Atlas Pro
+        highlights:
+          - Syncs views into new migrations and tests them on a disposable MySQL instance
+      - name: '[Web Application Penetration Test](https://grobolsek.com/assets/VarProg_Grobol%C5%A1ek_Tinauer-BwV06_Ye.pdf)'
+        date:
+        start_date:
+        end_date:
+        location:
+        summary: co-authored white-box test (PTES, OWASP Top 10)
+        highlights:
+          - Found a critical CWE-319 flaw (credentials sent over plain HTTP); no SQLi or XSS
+      - name: '[TINR](https://github.com/grobolsek/TINR)'
+        date:
+        start_date:
+        end_date:
+        location:
+        summary: custom game engine and game in Rust (in progress)
+        highlights:
+          - Cargo workspace of engine, platform and game crates on Bevy ECS and Macroquad
+    skills:
+      - label: Languages
+        details: Python, SQL, Java, C, TypeScript
+      - label: Data and Backend
+        details: FastAPI, SQLAlchemy, PostgreSQL, MySQL, OpenCV, scikit-image, Orange3, Streamlit
+      - label: DevOps and Tools
+        details: Linux, Docker, Docker Compose, Caddy, Git, Bash
+      - label: Security
+        details: Web and network security, penetration testing (PTES, OWASP Top 10), binary exploitation, GDB
+      - label: Currently Learning
+        details: Kubernetes, cloud-init, virtual machine provisioning, Rust
+    About Me:
+      - I am a third-year computer science student at the University of Ljubljana with a long-standing interest in programming. I started programming in secondary school, where I first worked with Python, and I have used it ever since. At university I added Java, TypeScript and C.
+      - I work as a data scientist at Knauf Insulation, where I build Python tools for data and image analysis. I also develop backend services and command-line utilities.
+      - In my free time I keep improving my skills through personal projects, from web apps to command-line tools that streamline my workflow. Outside programming, I enjoy climbing and board games.
+
+design:
+  theme: classic
+  page:
+    size: a4
+    top_margin: 0.6in
+    bottom_margin: 0.6in
+  #   left_margin: 0.7in
+  #   right_margin: 0.7in
+    show_footer: false
+    show_top_note: false
+  # colors:
+  #   body: rgb(0, 0, 0)
+  #   name: rgb(0, 79, 144)
+  #   headline: rgb(0, 79, 144)
+  #   connections: rgb(0, 79, 144)
+  #   section_titles: rgb(0, 79, 144)
+  #   links: rgb(0, 79, 144)
+  #   footer: rgb(128, 128, 128)
+  #   top_note: rgb(128, 128, 128)
+  # typography:
+  #   line_spacing: 0.6em
+  #   alignment: justified
+  #   date_and_location_column_alignment: right
+  #   font_family:
+  #     body: Source Sans 3
+  #     name: Source Sans 3
+  #     headline: Source Sans 3
+  #     connections: Source Sans 3
+  #     section_titles: Source Sans 3
+  #   font_size:
+  #     body: 10pt
+  #     name: 30pt
+  #     headline: 10pt
+  #     connections: 10pt
+  #     section_titles: 1.4em
+  #   small_caps:
+  #     name: false
+  #     headline: false
+  #     connections: false
+  #     section_titles: false
+  #   bold:
+  #     name: true
+  #     headline: false
+  #     connections: false
+  #     section_titles: true
+  # links:
+  #   underline: false
+  #   show_external_link_icon: false
+  header:
+    alignment: center
+  #   photo_width: 3.5cm
+  #   photo_position: left
+  #   photo_space_left: 0.4cm
+  #   photo_space_right: 0.4cm
+  #   space_below_name: 0.7cm
+  #   space_below_headline: 0.7cm
+  #   space_below_connections: 0.7cm
+    connections:
+      phone_number_format: international
+  #     hyperlink: true
+  #     show_icons: true
+  #     display_urls_instead_of_usernames: false
+  #     separator: ''
+  #     space_between_connections: 0.5cm
+  # section_titles:
+  #   type: with_partial_line
+  #   line_thickness: 0.5pt
+  #   space_above: 0.5cm
+  #   space_below: 0.3cm
+  sections:
+  #   allow_page_break: true
+    space_between_regular_entries: 1em
+  #   space_between_text_based_entries: 0.3em
+  #   show_time_spans_in:
+  #     - experience
+  # entries:
+  #   date_and_location_width: 4.15cm
+  #   side_space: 0.2cm
+  #   space_between_columns: 0.1cm
+  #   allow_page_break: false
+  #   short_second_row: true
+  #   degree_width: 1cm
+  #   summary:
+  #     space_above: 0cm
+  #     space_left: 0cm
+  #   highlights:
+  #     bullet: •
+  #     nested_bullet: •
+  #     space_left: 0.15cm
+  #     space_above: 0cm
+  #     space_between_items: 0cm
+  #     space_between_bullet_and_text: 0.5em
+  templates:
+  #   footer: '*NAME -- PAGE_NUMBER/TOTAL_PAGES*'
+  #   top_note: '*LAST_UPDATED CURRENT_DATE*'
+  #   single_date: MONTH_ABBREVIATION YEAR
+  #   date_range: START_DATE – END_DATE
+  #   time_span: HOW_MANY_YEARS YEARS HOW_MANY_MONTHS MONTHS
+  #   one_line_entry:
+  #     main_column: '**LABEL:** DETAILS'
+  #   education_entry:
+  #     main_column: |-
+  #       **INSTITUTION**, AREA
+  #       SUMMARY
+  #       HIGHLIGHTS
+  #     degree_column: '**DEGREE**'
+  #     date_and_location_column: |-
+  #       LOCATION
+  #       DATE
+    normal_entry:
+      main_column: |-
+        **NAME** – SUMMARY
+        HIGHLIGHTS
+  #     date_and_location_column: |-
+  #       LOCATION
+  #       DATE
+  #   experience_entry:
+  #     main_column: |-
+  #       **COMPANY**, POSITION
+  #       SUMMARY
+  #       HIGHLIGHTS
+  #     date_and_location_column: |-
+  #       LOCATION
+  #       DATE
+  #   publication_entry:
+  #     main_column: |-
+  #       **TITLE**
+  #       SUMMARY
+  #       AUTHORS
+  #       URL (JOURNAL)
+  #     date_and_location_column: DATE
+locale:
+  language: english
+  # last_updated: Last updated in
+  # month: month
+  # months: months
+  # year: year
+  # years: years
+  # present: present
+  # phrases:
+  #   degree_with_area: DEGREE in AREA
+  # month_abbreviations:
+  #   - Jan
+  #   - Feb
+  #   - Mar
+  #   - Apr
+  #   - May
+  #   - June
+  #   - July
+  #   - Aug
+  #   - Sept
+  #   - Oct
+  #   - Nov
+  #   - Dec
+  # month_names:
+  #   - January
+  #   - February
+  #   - March
+  #   - April
+  #   - May
+  #   - June
+  #   - July
+  #   - August
+  #   - September
+  #   - October
+  #   - November
+  #   - December
+settings:
+  current_date: today
+  render_command:
+    output_folder: rendercv_output
+    design:
+    locale:
+    typst_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.typ
+    pdf_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.pdf
+    markdown_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.md
+    html_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.html
+    png_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.png
+    dont_generate_markdown: false
+    dont_generate_html: false
+    dont_generate_typst: false
+    dont_generate_pdf: false
+    dont_generate_png: false
+  bold_keywords: []
+  pdf_title: NAME - CV
