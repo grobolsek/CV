@@ -1,0 +1,18 @@
+#!/bin/sh
+# After every commit: push the branch, once the repository has a remote.
+
+git_dir=$(git rev-parse --git-dir)
+# Not in the middle of a rebase, merge, cherry-pick or revert: those make several commits.
+for f in rebase-merge rebase-apply MERGE_HEAD CHERRY_PICK_HEAD REVERT_HEAD; do
+  [ -e "$git_dir/$f" ] && exit 0
+done
+branch=$(git symbolic-ref --quiet --short HEAD) || exit 0
+
+if git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' > /dev/null 2>&1; then
+  git push --quiet || echo "post-commit: the push failed; run git push yourself" >&2
+elif remote=$(git remote | head -n 1) && [ -n "$remote" ]; then
+  git push --quiet --set-upstream "$remote" "$branch" ||
+    echo "post-commit: the push failed; run git push yourself" >&2
+else
+  echo "post-commit: no remote yet, so nothing was pushed (git remote add origin <url>)"
+fi

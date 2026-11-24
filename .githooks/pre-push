@@ -1,0 +1,27 @@
+#!/bin/sh
+# Before every push: refuse to send a commit that contains the real phone number in any file,
+# for instance one made with --no-verify, which skips the pre-commit check.
+set -eu
+
+phone=$(git config --get cv.phone || true)
+[ -n "$phone" ] || exit 0
+top=$(git rev-parse --show-toplevel)
+pattern=$(printf '%s' "$phone" | python3 -I "$top/.githooks/cv_filter.py" pattern)
+zero=0000000000000000000000000000000000000000
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ "$local_sha" = "$zero" ] && continue # deleting a branch
+  if [ "$remote_sha" = "$zero" ]; then
+    commits=$(git rev-list "$local_sha") # a new branch: check all of its history
+  else
+    commits=$(git rev-list "$remote_sha..$local_sha")
+  fi
+  for c in $commits; do
+    if git grep -I -q -E -e "$pattern" "$c"; then
+      echo "pre-push: commit $(git log -1 --format='%h %s' "$c") contains your phone number:" >&2
+      git grep -I -l -E -e "$pattern" "$c" >&2
+      echo "Nothing was pushed." >&2
+      exit 1
+    fi
+  done
+done

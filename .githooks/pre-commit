@@ -1,0 +1,44 @@
+#!/bin/sh
+# Before every commit: make sure the real phone number is not in it, then render the public CV
+# (with the masked number) into public/ and add it to the commit.
+set -eu
+
+top=$(git rev-parse --show-toplevel)
+cd "$top"
+filter="python3 -I .githooks/cv_filter.py"
+cv=$(ls ./*_CV.yaml 2>/dev/null | head -n 1)
+cv=${cv#./}
+[ -n "$cv" ] || { echo "pre-commit: no *_CV.yaml in $top" >&2; exit 1; }
+
+# The real number lives only in the working copy and in this clone's config (cv.phone), which
+# the smudge filter reads to put it back. Keep cv.phone up to date when the number changes.
+phone=$($filter phone < "$cv")
+[ -z "$phone" ] || git config cv.phone "$phone"
+phone=$(git config --get cv.phone || true)
+
+# The clean filter masks the YAML when it is staged. Stop if the number reached the commit
+# any other way (a file added by hand, or the filter turned off).
+if [ -n "$phone" ]; then
+  pattern=$(printf '%s' "$phone" | $filter pattern)
+  if git grep --cached -I -q -E -e "$pattern"; then
+    echo "pre-commit: your phone number is staged in:" >&2
+    git grep --cached -I -l -E -e "$pattern" >&2
+    echo "Unstage those files (git restore --staged <file>) and run .githooks/setup.sh." >&2
+    exit 1
+  fi
+fi
+
+# Render the staged copy of the CV, which the clean filter has already masked.
+rendercv=$(command -v rendercv || echo "$HOME/.local/bin/rendercv")
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+git show ":$cv" > "$tmp/$cv"
+if ! "$rendercv" render "$tmp/$cv" --output-folder "$tmp/out" --dont-generate-html > "$tmp/log" 2>&1; then
+  cat "$tmp/log" >&2
+  echo "pre-commit: RenderCV failed, so nothing was committed" >&2
+  exit 1
+fi
+rm -f "$tmp"/out/*.typ
+rm -rf public
+mv "$tmp/out" public
+git add -A public
